@@ -1,0 +1,9 @@
+mysql> use Chinook;
+ERROR 1049 (42000): Unknown database 'Chinook'
+mysql> mysql-ctl start
+    -> mysql -u $C9_USER -p
+    -> use Chinook;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'mysql-ctl start
+mysql -u $C9_USER -p
+use Chinook' at line 1
+mysql> 

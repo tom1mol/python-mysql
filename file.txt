@@ -1,9 +1,17 @@
+mysql> select * from Friends;
+ERROR 2006 (HY000): MySQL server has gone away
+No connection. Trying to reconnect...
+Connection id:    81
+Current database: *** NONE ***
+
+ERROR 1046 (3D000): No database selected
+mysql> use chinook;
+ERROR 1049 (42000): Unknown database 'chinook'
 mysql> use Chinook;
-ERROR 1049 (42000): Unknown database 'Chinook'
-mysql> mysql-ctl start
-    -> mysql -u $C9_USER -p
-    -> use Chinook;
-ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'mysql-ctl start
-mysql -u $C9_USER -p
-use Chinook' at line 1
-mysql> 
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> select * from Friends;
+Empty set (0.00 sec)
+

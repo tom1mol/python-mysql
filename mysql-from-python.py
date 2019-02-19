@@ -1,4 +1,5 @@
 import os
+import datetime
 import pymysql
 
 # get username from cloud9 workspace
@@ -16,12 +17,12 @@ connection = pymysql.connect(host='localhost',
 try:
     #run a query
     with connection.cursor() as cursor:
-        sql = "SELECT * FROM Artist;"
-        cursor.execute(sql)                         #execute the sql command
-        result = cursor.fetchall()                  #get result back
-        print(result)
+        cursor.execute("""CREATE TABLE IF NOT EXISTS
+                       Friends(name char(20), age int, DOB datetime);""")                         
+        #note that the above still may display a warning(not error) if table already exists
 finally:
     #Close the connection, regardless of whether the above was successful
     connection.close()
     
-    
+    #run thids in bash....then go to mysql and type:
+    #   select * from Friends;          use Chinook

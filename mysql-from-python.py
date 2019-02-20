@@ -16,7 +16,7 @@ connection = pymysql.connect(host='localhost',
 try:
     #run a query
     with connection.cursor() as cursor:
-        rows = cursor.execute("DELETE FROM Friends WHERE name = 'Bob';")                   
+        row = cursor.execute("DELETE FROM Friends WHERE name = %s;", 'bob')                  
         connection.commit()
 finally:
     #Close the connection, regardless of whether the above was successful

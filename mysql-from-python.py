@@ -1,5 +1,4 @@
 import os
-import datetime
 import pymysql
 
 # get username from cloud9 workspace
@@ -18,7 +17,8 @@ try:
     #run a query
     with connection.cursor() as cursor:
         
-        cursor.execute("UPDATE Friends SET age = 22 where name = 'Bob';")                     
+        cursor.execute("UPDATE Friends SET age = %s WHERE name = %s;",
+                        (23, 'Bob'))                     
         connection.commit()
 finally:
     #Close the connection, regardless of whether the above was successful

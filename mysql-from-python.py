@@ -16,7 +16,10 @@ connection = pymysql.connect(host='localhost',
 try:
     #run a query
     with connection.cursor() as cursor:
-        row = cursor.executemany("DELETE FROM Friends WHERE name = %s;", ['bob', 'jim'])                  
+        list_of_names = ['fred', 'Fred']
+        #prepare a string with the same num of placeholders as in list_of_names
+        format_strings = ','.join(['%s']*len(list_of_names))
+        cursor.execute("DELETE FROM Friends WHERE name in ({});".format(format_strings), list_of_names)
         connection.commit()
 finally:
     #Close the connection, regardless of whether the above was successful
@@ -24,3 +27,16 @@ finally:
     
     #run thids in bash....then go to mysql and type:
     #   select * from Friends;          use Chinook
+    
+    
+""" python code
+>>> names = ['jim', 'bob']
+>>> len(names)
+2
+>>> ['%s']*len(names)
+['%s', '%s']
+>>> ",".join(['%s']*len(names))
+'%s,%s'
+>>> "DELETE FROM Friends WHERE name in ({0})".format(",".join(['%s']*len(names))
+... exit()
+"""
